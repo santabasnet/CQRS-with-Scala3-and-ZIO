@@ -1,0 +1,17 @@
+services:
+  db:
+    image: postgres:17.4
+    environment:
+      POSTGRES_USER: "cqrs"
+      POSTGRES_PASSWORD: "cqrs"
+      POSTGRES_DB: "cqrs"
+      PGDATA: /data/postgres
+    volumes:
+      - postgres-db1:/data/postgres
+      - ./docker_postgres_init.sql:/docker-entrypoint-initdb.d/docker_postgres_init.sql
+    ports:
+      - "5432:5432"
+
+volumes:
+  postgres-db1:
+    driver: local
