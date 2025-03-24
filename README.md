@@ -80,7 +80,8 @@ def insertAll = for {
   } yield ()
 ```
 When the items are inserted in the Queue, the background process invokes to cruch it and transfers to Read models. The list of attributes and their values are transformed to Map of data labels and associated values.
-### Input from Write Model: 
+
+#### Input from Write Model: 
 ```CSV
 4578de57-3143-4138-a39a-ff06cf7da85a,37271618-b2d9-4a4c-b6e6-3f81e738af8a,7df7a406-aa11-4135-9f4b-ae2130afb08c,"""Shiv Kumar Bantawa""",2025-03-23 23:48:05.638498,2025-03-23 23:48:05.638543
 0ed9ce5e-5fd6-4cf1-b24e-08b77435108f,37271618-b2d9-4a4c-b6e6-3f81e738af8a,b52faa52-b148-4c78-8cb8-671917c251af,"""Male""",2025-03-23 23:48:05.639142,2025-03-23 23:48:05.639162
@@ -94,8 +95,11 @@ e133a418-560e-429d-ad00-74c38fe92997,37271618-b2d9-4a4c-b6e6-3f81e738af8a,c3d161
 a9bbc52c-f51d-4b05-abcd-327568e8fb4e,37271618-b2d9-4a4c-b6e6-3f81e738af8a,0aebfa91-bf9b-4b40-8257-9ae6245172a5,"""parbati_shah@gmail.com""",2025-03-23 23:48:05.639596,2025-03-23 23:48:05.639619
 ```
 
-
-### Output to Read Model: 
+#### Output to Read Model: 
+```CSV
+3279473f-afda-41cb-8b9f-634a5f99cdc6,Person,"{""City"": ""Kathmandu"", ""Name"": ""Shiv Kumar Bantawa"", ""Gender"": ""Male"", ""Email Address"": ""shiv_bantawa@gmail.com"", ""Contact Address"": ""Kalanki, Ward No. 39, Kathmandu, Nepal""}",2025-03-23 23:48:05.914545,2025-03-23 23:48:05.914564
+32512259-b21d-47b5-b240-8883474c7d30,Person,"{""City"": ""Kathmandu"", ""Name"": ""Parbati Kumar Shah"", ""Gender"": ""Female"", ""Email Address"": ""parbati_shah@gmail.com"", ""Contact Address"": ""Balkhu, Ward No. 40, Kathmandu, Nepal""}",2025-03-23 23:48:05.942720,2025-03-23 23:48:05.942734
+```
 
 ### Usage
 ```Scala
