@@ -59,7 +59,6 @@ END;
 ```
 ### Usage
 ```Scala
-import scalatags.Text.all._
 import zio._
 import com.iict.services._
 import com.iict.model.DoobieTransactor
@@ -79,6 +78,7 @@ object Main extends ZIOAppDefault {
     _ <- queuedJob.runActivities
 
   } yield ()
+
 }
 ```
 
