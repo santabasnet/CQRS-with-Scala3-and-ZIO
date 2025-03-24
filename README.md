@@ -2,7 +2,7 @@
 ---
 The Command Query Responsibility Segregation (CQRS) design separates database operations into distinct models: the Command (Write) model for handling write operations and the Query (Read) model for managing read operations. This approach improves performance by enabling scalability, enhances security by restricting write access to designated databases, and is particularly beneficial for microservices architectures.
 
-This work demonstrate a complete example of CQRS implementation with Scala, ZIO and PosgreSQL. 
+This work demonstrate a complete example of CQRS implementation with Scala, ZIO, Doobie and PosgreSQL. 
 ### DataModel
 ```SQL
 
@@ -57,3 +57,32 @@ CREATE TABLE entity_record
 );
 END;
 ```
+### Usage
+```Scala
+import scalatags.Text.all._
+import zio._
+import com.iict.services._
+import com.iict.model.DoobieTransactor
+
+object Main extends ZIOAppDefault {
+
+  def run = for {
+    transactor <- DoobieService.doobieTransactor
+    dataService <- EntityService.service(transactor)
+    _ = println("\nClearing the data tables ...")
+    _ <- dataService.clearAll
+
+    _ = println("\nPerform Insert Operation on Demo Data ...")
+    _ <- dataService.insertAll
+
+    queuedJob <- EntityQueuedJob.service(transactor)
+    _ <- queuedJob.runActivities
+
+  } yield ()
+}
+```
+
+### Compile and Run
+- mill cqrs.compile
+- mill cqrs.run
+
